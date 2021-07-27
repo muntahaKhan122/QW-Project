@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Login from './login';
-import Signup from './signup';
-import Home from './home';
-import Quotes from './quotes';
-import Wallpapers from './wallpapers';
-import Header from './header';
-import searchFunc from './search';
-import  {background} from './assets/images/qwBackground.jpg';
+import searchFunc from '../../utils/search';
 
 const QuoteList=(props)=> {
  

@@ -1,9 +1,6 @@
-import React, { Component, useEffect, useRef, useState } from 'react';
-import './signup.css';
-import Signup from './signup';
-import { Link } from 'react-router-dom';
-import { useHistory,useLocation } from "react-router-dom";
-import { Nav, Navbar, Form, FormControl } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import '../../css/signup.css';
+import { Nav, Navbar, Form } from 'react-bootstrap';
 
 const Header = (props) =>{
 

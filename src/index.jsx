@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './css/index.css';
 import reportWebVitals from './reportWebVitals';
-import Login from './login';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Routing from './routing';
+import Routing from './routing/routing';
 
 ReactDOM.render(
   <React.StrictMode>

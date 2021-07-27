@@ -1,9 +1,7 @@
-import React, { Component, useEffect, useRef, useState } from 'react';
-import './signup.css';
-import Signup from './signup';
+import React, {useState } from 'react';
+import '../css/signup.css';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom";
-import Home from './home';
 
 
 const Login = () =>{

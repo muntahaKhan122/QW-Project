@@ -1,7 +1,6 @@
-import React, { Component, useEffect, useRef, useState } from 'react';
-import './signup.css';
+import React, { useState } from 'react';
+import '../css/signup.css';
 import { useHistory } from "react-router-dom";
-import Home from './home';
 import { Link } from 'react-router-dom';
 
 

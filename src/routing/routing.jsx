@@ -1,22 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Login from './login';
-import Signup from './signup';
-import Home from './home';
-import Quotes from './quotes';
-import Wallpapers from './wallpapers';
-import Header from './header';
-import QuotesPage from './quotePage';
-import WallpaperPage from './wallpaperPage';
+import Login from '../pages/login';
+import Signup from '../pages/signup';
+import QuotesPage from '../pages/quotePage';
+import WallpaperPage from '../pages/wallpaperPage';
 
 function Routing() {
  
-  const [searchh,setSearch]=useState("");
-
-  const setSearchData=(val)=>{
-    console.log("in route",val)
-    setSearch(val);
-  }
+  
  
  
   return (
@@ -28,9 +19,6 @@ function Routing() {
           </Route>
           <Route path="/Signup" exact>
             <Signup />
-          </Route>
-          <Route path="/Home" exact>
-            <Home />
           </Route>
           <Route path="/Quotes" exact>
             <QuotesPage/>

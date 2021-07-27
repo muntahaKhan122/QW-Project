@@ -1,12 +1,8 @@
-import React, { Component, useEffect, useRef, useState } from 'react';
-import './signup.css';
-import Signup from './signup';
-import { Link } from 'react-router-dom';
-import { useHistory } from "react-router-dom";
-import OpenModal from './modal';
-import { Modal } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import '../../css/signup.css';
+import OpenModal from '../Modal/modal';
 
-const Wallppr = ({}) =>{
+const Wallppr = () =>{
 
     
   const [photos,setPhotos]=useState([]);
@@ -52,7 +48,7 @@ const Wallppr = ({}) =>{
      </>
             )
 
-        }):""
+        }):"..Loading"
         
 
         }

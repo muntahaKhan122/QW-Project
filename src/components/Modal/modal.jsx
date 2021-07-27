@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 
@@ -11,7 +11,6 @@ const OpenModal=(props)=> {
     }
   
     useEffect(() => {
-        console.log("in use eff modal",props.open);
         
         setShow(props.open);
     },[props.open] 
@@ -25,8 +24,8 @@ const OpenModal=(props)=> {
 
   
         <Modal show={showw} onHide={handleClose}>
-          <Modal.Header >
-            <Modal.Title style={{textAlign:"center"}}>Wallpaper</Modal.Title>
+          <Modal.Header style={{alignItems:"center"}}>
+            <Modal.Title >Wallpaper</Modal.Title>
           </Modal.Header>
           <Modal.Body>
           <img src={props.url} width="300px" height="400px"/>
