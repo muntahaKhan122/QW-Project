@@ -1,7 +1,10 @@
+/* eslint-disable react/jsx-no-duplicate-props */
+/* eslint-disable require-jsdoc */
 import React, {useState} from 'react';
 import '../css/signup.css';
 import {useHistory} from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import {Auth} from 'aws-amplify';
 
 
 const Signup = () =>{
@@ -13,12 +16,31 @@ const Signup = () =>{
   const history = useHistory();
 
 
+  async function signUp() {
+    try {
+      const {user} = await Auth.signUp({
+        username,
+        password,
+        attributes: {
+          email, // optional
+
+        },
+      });
+      console.log(user);
+      history.push('/VerifyUser');
+    } catch (error) {
+      setError('No such user exists');
+      console.log('error signing up:', error);
+    }
+  }
+
+
   const checkValidations=(event)=>{
     event.preventDefault();
 
     if (email!==''&&username!==''&&password!==''&&confPass!=='') {
       if (password===confPass) {
-        history.push('/Quotes');
+        signUp();
       } else {
         setError('Passwords do not match');
       }
@@ -41,13 +63,13 @@ const Signup = () =>{
             type="text" id="username" className="fadeIn first"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            name="login" placeholder="email"
+            name="login" placeholder="username"
           />
           <input
             type="text" id="email" className="fadeIn second"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            name="login" placeholder="Username"
+            name="login" placeholder="email"
           />
           <input
             type="password" id="password" className="fadeIn third"
@@ -56,7 +78,7 @@ const Signup = () =>{
             name="login" placeholder="password"
           />
           <input
-            type="password" id="password" className="fadeIn fourth"
+            type="password" id="confpassword" className="fadeIn fourth"
             value={confPass}
             onChange={(e) => setConfPass(e.target.value)}
             name="login" placeholder="confirm password"

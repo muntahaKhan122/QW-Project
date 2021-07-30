@@ -1,7 +1,9 @@
+/* eslint-disable require-jsdoc */
 /* eslint-disable react/prop-types */
 import React, {useEffect, useState} from 'react';
 import '../../css/signup.css';
 import {Nav, Navbar, Form} from 'react-bootstrap';
+import {Auth} from 'aws-amplify';
 
 const Header = (props) =>{
   const [activeLink, setActivelink]=useState('/Quotes');
@@ -21,7 +23,13 @@ const Header = (props) =>{
     }
   };
 
-
+  async function signOut() {
+    try {
+      await Auth.signOut();
+    } catch (error) {
+      console.log('error signing out: ', error);
+    }
+  }
   return (
 
     <Navbar expand="lg" >
@@ -61,15 +69,27 @@ const Header = (props) =>{
 
 
           {activeLink==='/Quotes'?
-         <Nav className="me-auto">
-
-           <Nav.Item style={{marginLeft: '900px'}}>
+         <Nav className="justify-content-end">
+           <Nav.Item >
              <span style={{color: 'white', marginRight: '5px'}}>Search</span>
              <input type="search" style={{alignSelf: 'right'}}
                value={searchData} onChange={(e) => setSearch(e.target.value)}
                name="searchQuote" onKeyDown={handleKeyDown}/>
            </Nav.Item>
-         </Nav>:''
+           <Nav.Item name="signout">
+             <Nav.Link href="/" onClick={signOut()}
+               style={{color: 'white', float: 'inline-end'}}>
+            Sign Out</Nav.Link>
+           </Nav.Item>
+
+         </Nav>:
+         <Nav className="justify-content-end">
+           <Nav.Item name="signout" style={{float: 'inline-end'}}>
+             <Nav.Link href="/" onClick={signOut()}
+               style={{color: 'white'}}>
+                   Sign Out</Nav.Link>
+           </Nav.Item>
+         </Nav>
           }
 
         </Navbar.Collapse>

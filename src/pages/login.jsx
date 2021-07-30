@@ -1,24 +1,36 @@
+/* eslint-disable require-jsdoc */
 import React, {useState} from 'react';
 import '../css/signup.css';
 import {Link} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
-
+import Amplify, {Auth} from 'aws-amplify';
+import awsconfig from '../aws-exports';
+Amplify.configure(awsconfig);
 
 const Login = () =>{
   const history = useHistory();
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(' ');
-
+  const [username, setUsername] = useState('');
   const checkValidations=(event)=>{
     event.preventDefault();
-    if (email!=='' &&password!=='') {
-      history.push('/Quotes');
+    if (username!=='' &&password!=='') {
+      signIn();
     } else {
       setError('All fields should be filled');
     }
   };
 
+  async function signIn() {
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const user = await Auth.signIn(username, password);
+      history.push('/Quotes');
+    } catch (error) {
+      setError('No such user exists');
+      console.log('error signing in', error);
+    }
+  }
 
   return (
     <div className="wrapper fadeInDown">
@@ -30,9 +42,9 @@ const Login = () =>{
         <form>
           <input
             type="text" id="login" className="fadeIn second"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            name="login" placeholder="email"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            name="logi" placeholder="username"
           />
           <input
             type="password" id="password" className="fadeIn third"

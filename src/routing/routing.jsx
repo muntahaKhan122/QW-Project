@@ -5,6 +5,7 @@ import Login from '../pages/login';
 import Signup from '../pages/signup';
 import QuotesPage from '../pages/quotePage';
 import WallpaperPage from '../pages/wallpaperPage';
+import VerifySignup from '../pages/confirmSignup';
 
 function Routing() {
   return (
@@ -23,6 +24,10 @@ function Routing() {
         <Route path="/Wallpapers" exact>
           <WallpaperPage />
         </Route>
+        <Route path="/VerifyUser" exact>
+          <VerifySignup />
+        </Route>
+
       </Switch>
 
     </Router>
